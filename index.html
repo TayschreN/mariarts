@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maria — Arte Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="scroll-progress" id="scroll-progress"></div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">Maria</a>
+  <ul id="nav-menu">
+    <li><a href="#portfolio" onclick="closeMenu()">portfolio</a></li>
+    <li><a href="#servicos" onclick="closeMenu()">serviços</a></li>
+    <li><a href="#sobre" onclick="closeMenu()">sobre</a></li>
+    <li><a href="#depoimentos" onclick="closeMenu()">depoimentos</a></li>
+    <li><a href="#contato" onclick="closeMenu()">contato</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="abrir menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-deco"></div>
+  <div style="position:relative;z-index:1;">
+    <div class="hero-tag">✦ Arte Digital Disponível para Freelas</div>
+    <h1>Maria<span>cria mundos</span></h1>
+    <p class="hero-sub">ilustração · design gráfico · tipografia criativa</p>
+    <div class="btn-group">
+      <a href="#portfolio" class="btn btn-primary">ver portfólio</a>
+      <a href="#contato" class="btn btn-outline">encomendar arte</a>
+    </div>
+    <div class="scroll-hint">scroll</div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-num" data-target="47">0</span>
+    <span class="stat-label">projetos entregues</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num" data-target="31">0</span>
+    <span class="stat-label">clientes felizes</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num" data-target="3">0</span>
+    <span class="stat-label">anos de experiência</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num" data-target="100">0</span>
+    <span class="stat-label">% dedicação</span>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-label">✦ trabalhos</div>
+  <h2>Portfólio</h2>
+  <p class="section-intro">Uma seleção de ilustrações, designs e experimentações tipográficas. Clique em qualquer obra para ampliar.</p>
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterCards('all',this)">Todos</button>
+    <button class="filter-btn" onclick="filterCards('manga',this)">Mangá & Ilustração</button>
+    <button class="filter-btn" onclick="filterCards('design',this)">Design Gráfico</button>
+    <button class="filter-btn" onclick="filterCards('typo',this)">Tipografia</button>
+  </div>
+  <div class="gallery">
+    <div class="card" data-cat="manga">
+      <div class="card-img portrait">
+        <img src="images/chibi-lolita.png" alt="Chibi Lolita — ilustração de personagem" onclick="openLightbox(this.src,'Chibi Lolita · Ilustração digital')">
+        <div class="card-overlay"><span class="overlay-btn">ampliar ✦</span></div>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><p class="card-title">Chibi Lolita</p><span class="tag tag-manga">mangá</span></div>
+        <p class="card-meta">Ilustração digital · line art · personagem chibi</p>
+      </div>
+    </div>
+    <div class="card" data-cat="design">
+      <div class="card-img landscape">
+        <img src="images/amara-book-cover.png" alt="Amara — design de capa editorial" onclick="openLightbox(this.src,'Amara — Book Cover · Design editorial')">
+        <div class="card-overlay"><span class="overlay-btn">ampliar ✦</span></div>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><p class="card-title">Amara — Book Cover</p><span class="tag tag-design">design</span></div>
+        <p class="card-meta">Capa editorial · design gráfico · pré-venda</p>
+      </div>
+    </div>
+    <div class="card" data-cat="typo">
+      <div class="card-img square">
+        <img src="images/ab-tipografia-flamengo.png" alt="AB — tipografia temática Flamengo" onclick="openLightbox(this.src,'AB — Tipografia Temática · Identidade visual')">
+        <div class="card-overlay"><span class="overlay-btn">ampliar ✦</span></div>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><p class="card-title">AB — Tipografia Temática</p><span class="tag tag-typo">tipografia</span></div>
+        <p class="card-meta">Design tipográfico · identidade visual</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SERVIÇOS -->
+<div class="services-section" id="servicos">
+  <div class="services-inner">
+    <div class="section-label">✦ o que faço</div>
+    <h2>Serviços</h2>
+    <p class="section-intro">Cada projeto é único. Aqui estão as principais formas de trabalhar comigo.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">🎨</span>
+        <p class="service-title">Ilustração de Personagem</p>
+        <p class="service-desc">Personagens originais no estilo chibi, mangá ou semi-realista. Inclui até 2 revisões e arquivo em alta resolução.</p>
+        <span class="service-price">a partir de R$ 80</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">📚</span>
+        <p class="service-title">Capa Editorial</p>
+        <p class="service-desc">Design de capas para livros, e-books, wattpad e fanfics. Layout completo com tipografia e composição.</p>
+        <span class="service-price">a partir de R$ 120</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🔤</span>
+        <p class="service-title">Tipografia Criativa</p>
+        <p class="service-desc">Letras, logotipos e tratamentos tipográficos com identidade visual forte. Para times, marcas ou uso pessoal.</p>
+        <span class="service-price">a partir de R$ 60</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">✨</span>
+        <p class="service-title">Identidade Visual</p>
+        <p class="service-desc">Pacote completo: logo, paleta de cores, tipografia e guia de estilo para sua marca ou perfil criativo.</p>
+        <span class="service-price">a partir de R$ 250</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="about-grid">
+    <div>
+      <div class="section-label">✦ quem sou</div>
+      <h2>Sobre<br>a Maria</h2>
+      <p style="color:var(--muted);font-weight:300;margin-bottom:1rem;">Oi! Sou a Maria, artista digital apaixonada por personagens, letras e tudo que carrega identidade visual forte. Comecei desenhando no papel mesmo, fui migrando pro digital e nunca mais parei.</p>
+      <p style="color:var(--muted);font-weight:300;margin-bottom:1rem;">Trabalho com ilustração de personagens no estilo mangá/chibi, design editorial e tipografia temática — sempre buscando misturar técnica com personalidade. Cada projeto que entrego tem um cuidado que vai além do técnico.</p>
+      <p style="color:var(--muted);font-weight:300;margin-bottom:1.5rem;">Estou aberta a freelas, colaborações e encomendas. Se você tem um projeto criativo em mente, me conta — adoro transformar ideias em imagem!</p>
+      <ul class="skills-list">
+        <li>Ilustração digital</li>
+        <li>Personagens chibi</li>
+        <li>Design gráfico</li>
+        <li>Tipografia criativa</li>
+        <li>Capas editoriais</li>
+        <li>Identidade visual</li>
+        <li>Line art</li>
+        <li>Fanarts</li>
+      </ul>
+      <p style="font-size:0.8rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem;">ferramentas</p>
+      <div class="tools-grid">
+        <div class="tool-item"><strong>Procreate</strong>ilustração</div>
+        <div class="tool-item"><strong>Photoshop</strong>edição</div>
+        <div class="tool-item"><strong>Illustrator</strong>vetores</div>
+        <div class="tool-item"><strong>Canva</strong>design rápido</div>
+        <div class="tool-item"><strong>Clip Studio</strong>mangá</div>
+        <div class="tool-item"><strong>Figma</strong>layouts</div>
+      </div>
+    </div>
+    <div class="about-visual">
+      <span class="about-monogram">M</span>
+      <div class="about-center">
+        <span class="initial">M</span>
+        <span class="role">artista digital</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- DEPOIMENTOS -->
+<div class="testimonials-section" id="depoimentos">
+  <div class="testimonials-inner">
+    <div class="section-label">✦ o que dizem</div>
+    <h2>Depoimentos</h2>
+    <p class="section-intro">A opinião de quem já trabalhou comigo.</p>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"A Maria entregou a capa do meu wattpad muito além do que eu esperava. Ela entendeu a vibe da história só com o briefing e o resultado ficou perfeito. Super recomendo!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">A</div>
+          <div><p class="author-name">Ana Clara</p><p class="author-role">escritora · Wattpad</p></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Encomendei uma chibi da minha personagem e fiquei apaixonada! Processo super tranquilo, boa comunicação e entregou antes do prazo. Com certeza vou encomendar de novo."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">J</div>
+          <div><p class="author-name">Julia Ferreira</p><p class="author-role">cliente · ilustração chibi</p></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Pedi uma identidade visual com tema do Flamengo e ficou incrível. A tipografia tem muito a ver com o que eu queria. Preço justo e atendimento excelente!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">R</div>
+          <div><p class="author-name">Rafael Souza</p><p class="author-role">cliente · tipografia</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- CONTATO -->
+<div class="contact-section" id="contato">
+  <div class="contact-inner">
+    <div class="section-label">✦ fale comigo</div>
+    <h2>Vamos criar<br>algo juntos?</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Informações de contato</h3>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div class="contact-item-text">
+            <strong>e-mail</strong>
+            <a href="mailto:maria123@gmail.com">maria123@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div class="contact-item-text">
+            <strong>whatsapp</strong>
+            <a href="https://wa.me/5521952122112" target="_blank">(21) 95212-2112</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-item-text">
+            <strong>localização</strong>
+            <span>Rio de Janeiro, RJ — Brasil</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">⏰</div>
+          <div class="contact-item-text">
+            <strong>disponibilidade</strong>
+            <span>Seg – Sex, 9h às 19h</span>
+          </div>
+        </div>
+        <p style="font-size:0.8rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.5rem;margin-bottom:0.75rem;">redes sociais</p>
+        <div class="social-links">
+          <a href="#" class="social-btn" title="Instagram">📸</a>
+          <a href="#" class="social-btn" title="Behance">🅱</a>
+          <a href="#" class="social-btn" title="Twitter/X">🐦</a>
+          <a href="#" class="social-btn" title="TikTok">🎵</a>
+        </div>
+      </div>
+      <div class="contact-form" id="contact-form-wrap">
+        <div id="form-success" class="form-success">
+          <p style="font-size:2rem;margin-bottom:0.5rem;">🎉</p>
+          <p>Mensagem enviada! Te respondo em até 24h.</p>
+        </div>
+        <div id="form-fields">
+          <div class="form-row">
+            <div class="form-group">
+              <label>seu nome</label>
+              <input type="text" id="f-name" placeholder="Maria Silva" required>
+            </div>
+            <div class="form-group">
+              <label>e-mail</label>
+              <input type="email" id="f-email" placeholder="voce@email.com" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>tipo de projeto</label>
+            <select id="f-type">
+              <option value="">Selecione...</option>
+              <option>Ilustração de Personagem</option>
+              <option>Capa Editorial</option>
+              <option>Tipografia Criativa</option>
+              <option>Identidade Visual</option>
+              <option>Outro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>mensagem</label>
+            <textarea id="f-msg" placeholder="Conta um pouco sobre o seu projeto..."></textarea>
+          </div>
+          <button class="form-submit" onclick="submitForm()">Enviar mensagem ✦</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="back-top" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="voltar ao topo">↑</button>
+
+<footer>
+  <p>© 2026 Maria · arte digital com alma ✦ · <a href="mailto:maria123@gmail.com" style="color:var(--pink);text-decoration:none;">maria123@gmail.com</a></p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
